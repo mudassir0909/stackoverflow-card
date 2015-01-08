@@ -1,8 +1,8 @@
 # stackoverflow-card
 Embed your Stackoverflow account summary into your website using these beautiful cards.
-
+![screenshot](https://raw.githubusercontent.com/mudassir0909/stackoverflow-card/master/assets/img/so-card.png)
 # Usage
-Insert the following tag in your document where you wish to include the card. This card occupies available parent container's `width`, so give some meaningful width to the parent element.
+Insert the following tag in your document where you wish to include the card. **_This card occupies available parent container's `width`, so give some meaningful width to the parent element._**
 ```html
 <div id="so-card-widget" data-userid="1482899" data-theme="basic"></div>
 ```
