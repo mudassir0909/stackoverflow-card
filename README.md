@@ -12,7 +12,7 @@ Insert the following tag in your document where you wish to include the card. **
 
 In addition to that you need to include the following `script` tag & voila !
 ```html
-<script type="text/javascript" src="//cdn.rawgit.com/mudassir0909/stackoverflow-card/master/dist/so-card-widget.min.js"></script>
+<script type="text/javascript" src="//mudassir0909.github.io/stackoverflow-card/dist/so-card-widget.min.js"></script>
 ```
 
 # I don't like the card look and feel, I want my own styles !!
