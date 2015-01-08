@@ -23,9 +23,9 @@
         container = document.getElementById('so-card-widget'),
         config = container.dataset,
         request = new XMLHttpRequest(),
-        request_url = "http://api.stackexchange.com/2.2/users/" +
+        request_url = "//api.stackexchange.com/2.2/users/" +
                       config.userid + '/?site=stackoverflow',
-        widget_stylesheet_url = "dist/so-card-widget.min.css";
+        widget_stylesheet_url = "//cdn.rawgit.com/mudassir0909/stackoverflow-card/master/dist/so-card-widget.min.css";
 
     function compile(template, data) {
         return template.replace(
@@ -39,7 +39,7 @@
 
     function constructHeader(user_info) {
         //TODO: remove Hotlinking !
-        var logo_url = "http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png",
+        var logo_url = "//cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png",
             logo = compile(templates.logo, { url: logo_url }),
             profile_picture = compile(templates.profile_picture, {url: user_info.profile_image}),
             display_name = compile(templates.display_name, {name: user_info.display_name}),
