@@ -25,7 +25,7 @@
         request = new XMLHttpRequest(),
         request_url = "//api.stackexchange.com/2.2/users/" +
                       config.userid + '/?site=stackoverflow',
-        widget_stylesheet_url = "//mudassir0909.github.io/stackoverflow-card/dist/so-card-widget.min.css?v=1.0.0";
+        widget_stylesheet_url = "//mudassir0909.github.io/stackoverflow-card/dist/1.0.0/so-card-widget.min.css";
 
     function compile(template, data) {
         return template.replace(
