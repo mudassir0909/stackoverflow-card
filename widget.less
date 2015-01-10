@@ -1,0 +1,116 @@
+.base () {
+  .so-card {
+    background-color: white;
+    font-family: sans-serif;
+    position: relative;
+    border: 1px solid #efefef;
+    padding: 20px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    display: block;
+  }
+
+  .so-logo {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+
+    img {
+      width: 20px;
+    }
+  }
+
+  .so-display-name {
+    margin: 0;
+    text-align: center;
+  }
+
+  .so-content, .so-header, .so-footer {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .so-content {
+    text-align: center;
+  }
+
+  .so-header {
+    padding-top: 0;
+  }
+
+  .so-footer {
+    text-align: center;
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .so-reputation {
+    font-size: 2em;
+    text-align: center;
+    margin: 0;
+    color: darken(#f90, 5%);
+  }
+
+  .so-reputation-label {
+    color: #777
+  }
+
+  .so-badges-label {
+    color: #666;
+    font-size: 0.8em;
+    margin-right: 10px;
+  }
+
+  .so-badge {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 3px;
+  }
+
+  .so-badge-wrapper {
+    margin-right: 10px;
+  }
+
+  .so-badge-gold {
+    background-color: rgb(255, 205, 3);
+  }
+
+  .so-badge-silver {
+    background-color: rgb(197, 197, 197);
+  }
+
+  .so-badge-bronze {
+    background-color: rgb(204, 153, 102);
+  }
+
+  .so-profile-link {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+.so-card-theme-default, .so-card-theme-minimal {
+  .base();
+}
+
+.so-card-theme-default {
+  .so-profile-picture-container {
+    text-align: center;
+
+    img {
+      display: inline-block;
+      width: 75px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.so-card-theme-minimal {
+  .so-profile-picture-container {
+    display: none;
+  }
+}

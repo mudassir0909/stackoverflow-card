@@ -18,7 +18,7 @@
             header: '<div class="so-header">{html}</div>',
             content: '<div class="so-content">{html}</div>',
             footer: '<div class="so-footer">{html}</div>',
-            layout: '<div class="so-card so-theme-{theme}">{html}</div>'
+            layout: '<div class="so-card">{html}</div>'
         },
         container = document.getElementById('so-card-widget'),
         config = container.dataset,
@@ -86,34 +86,38 @@
             inner_html = [profile_link, header, content, footer].join('');
 
         return compile(templates.layout, {
-            theme: config.theme || 'basic',
             html: inner_html
         });
     }
 
     function render(user_info) {
+        var theme_class = "so-card-theme-" + (config.theme || 'default');
+
+        container.className += theme_class;
         container.innerHTML = constructCard(user_info);
     }
 
     // Inserting widget stylesheet
-    (function(document, tag_name) {
-        var existing_stylesheet_tags, last_stylesheet_tag,
-            widget_stylesheet_tag = document.createElement(tag_name);
+    if (config.theme !== 'custom') {
+        (function(document, tag_name) {
+            var existing_stylesheet_tags, last_stylesheet_tag,
+                widget_stylesheet_tag = document.createElement(tag_name);
 
-        widget_stylesheet_tag.rel = "stylesheet";
-        widget_stylesheet_tag.href = widget_stylesheet_url;
-        widget_stylesheet_tag.type = "text/css";
-        existing_stylesheet_tags = document.head.getElementsByTagName(tag_name);
-        last_stylesheet_tag = existing_stylesheet_tags[existing_stylesheet_tags.length - 1];
+            widget_stylesheet_tag.rel = "stylesheet";
+            widget_stylesheet_tag.href = widget_stylesheet_url;
+            widget_stylesheet_tag.type = "text/css";
+            existing_stylesheet_tags = document.head.getElementsByTagName(tag_name);
+            last_stylesheet_tag = existing_stylesheet_tags[existing_stylesheet_tags.length - 1];
 
-        if (last_stylesheet_tag) {
-            last_stylesheet_tag.parentNode
-                                .insertBefore(widget_stylesheet_tag,
-                                              last_stylesheet_tag.nextSibling);
-        } else {
-            document.head.insertBefore(widget_stylesheet_tag, null);
-        }
-    })(document, 'link');
+            if (last_stylesheet_tag) {
+                last_stylesheet_tag.parentNode
+                                    .insertBefore(widget_stylesheet_tag,
+                                                  last_stylesheet_tag.nextSibling);
+            } else {
+                document.head.insertBefore(widget_stylesheet_tag, null);
+            }
+        })(document, 'link');
+    }
 
     request.onreadystatechange = function() {
         if (request.readyState === 4) {

@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     },
     cssmin: {
       dist: {
-        src: 'widget.css',
+        src: 'dist/so-card-widget.css',
         dest: 'dist/so-card-widget.min.css'
       }
     },
@@ -58,8 +58,14 @@ module.exports = function(grunt) {
         tasks: ['jshint:gruntfile']
       },
       lib_test: {
-        files: ['widget.js', 'widget.css'],
+        files: ['widget.js', 'widget.less'],
         tasks: ['default']
+      }
+    },
+    less: {
+      compile: {
+        src: 'widget.less',
+        dest: 'dist/so-card-widget.css'
       }
     }
   });
@@ -70,9 +76,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-less');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'less', 'cssmin']);
   grunt.registerTask('init', ['default', 'watch']);
 
 };
