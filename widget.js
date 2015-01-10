@@ -38,8 +38,7 @@
     }
 
     function constructHeader(user_info) {
-        //TODO: remove Hotlinking !
-        var logo_url = "//cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png",
+        var logo_url = "//cdn.rawgit.com/mudassir0909/stackoverflow-card/master/assets/img/so-icon.png",
             logo = compile(templates.logo, { url: logo_url }),
             profile_picture = compile(templates.profile_picture, {url: user_info.profile_image}),
             display_name = compile(templates.display_name, {name: user_info.display_name}),
