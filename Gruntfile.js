@@ -11,21 +11,6 @@ module.exports = function(grunt) {
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
-    uglify: {
-      options: {
-        banner: '<%= banner %>'
-      },
-      dist: {
-        src: 'widget.js',
-        dest: 'dist/so-card-widget.min.js'
-      }
-    },
-    cssmin: {
-      dist: {
-        src: 'dist/so-card-widget.css',
-        dest: 'dist/so-card-widget.min.css'
-      }
-    },
     jshint: {
       options: {
         curly: true,
@@ -46,11 +31,42 @@ module.exports = function(grunt) {
         src: 'Gruntfile.js'
       },
       lib_test: {
-        src: ['widget.js']
+        src: ['lib/widget.js']
       }
     },
-    qunit: {
-      files: ['test/**/*.html']
+    lightweight_template_precompiler: {
+      compile: {
+        files: {
+          'dist/template.js': 'lib/so-card-template.html'
+        }
+      }
+    },
+    concat: {
+      dist: {
+        src: ['dist/template.js', 'lib/widget.js'],
+        dest: 'dist/so-card-widget.js'
+      }
+    },
+    uglify: {
+      options: {
+        banner: '<%= banner %>'
+      },
+      dist: {
+        src: 'lib/widget.js',
+        dest: 'dist/so-card-widget.min.js'
+      }
+    },
+    less: {
+      compile: {
+        src: 'lib/widget.less',
+        dest: 'dist/so-card-widget.css'
+      }
+    },
+    cssmin: {
+      dist: {
+        src: 'dist/so-card-widget.css',
+        dest: 'dist/so-card-widget.min.css'
+      }
     },
     watch: {
       gruntfile: {
@@ -58,28 +74,30 @@ module.exports = function(grunt) {
         tasks: ['jshint:gruntfile']
       },
       lib_test: {
-        files: ['widget.js', 'widget.less'],
+        files: ['lib/widget.js', 'lib/widget.less',
+                'lib/so-card-template.html', 'dist/template.js'],
         tasks: ['default']
       }
     },
-    less: {
-      compile: {
-        src: 'widget.less',
-        dest: 'dist/so-card-widget.css'
-      }
+    qunit: {
+      files: ['test/**/*.html']
     }
   });
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
+  grunt.loadNpmTasks('grunt-lightweight-template-precompiler');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'uglify', 'less', 'cssmin']);
+  grunt.registerTask('default', ['jshint', 'lightweight_template_precompiler',
+                                 'concat', 'uglify', 'less', 'cssmin']);
   grunt.registerTask('init', ['default', 'watch']);
 
 };
