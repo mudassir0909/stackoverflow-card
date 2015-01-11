@@ -27,7 +27,7 @@ This removes profile picture from the card
 ![screenshot](https://raw.githubusercontent.com/mudassir0909/stackoverflow-card/master/assets/img/so-card-theme-minimal.png)
 
 ### custom
-When you specify this as an option. The stylesheet related to this card is not downloaded. You have to specify your own styles based on the class names(Find out using chrome element inspector)
+When you specify this as an option. The stylesheet related to this card is not downloaded. You have to specify your own styles based on the class names. You can find the HTML structure [here](https://github.com/mudassir0909/stackoverflow-card/blob/master/lib/so-card-template.html)
 
 
 #### Note
