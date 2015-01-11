@@ -52,7 +52,7 @@ module.exports = function(grunt) {
         banner: '<%= banner %>'
       },
       dist: {
-        src: 'lib/widget.js',
+        src: 'dist/so-card-widget.js',
         dest: 'dist/so-card-widget.min.js'
       }
     },
