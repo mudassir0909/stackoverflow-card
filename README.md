@@ -15,9 +15,6 @@ In addition to that you need to include the following `script` tag & voila !
 <script type="text/javascript" src="//mudassir0909.github.io/stackoverflow-card/dist/1.0.0/so-card-widget.min.js"></script>
 ```
 
-# Look and feel Customization
-The card supports two themes out of the box
-
 # Callback
 This card fires a callback if it is done rendering the card. You should have a function named `soAsyncInit` defined globally. Stackoverflow profile data is passed along the callback;
 
@@ -26,6 +23,9 @@ window.soAsyncInit = function(profile_data) {
     // Do stuff;
 }
 ```
+
+# Look and feel Customization
+The card supports two themes out of the box
 
 ### default
 ![Default Theme](https://raw.githubusercontent.com/mudassir0909/stackoverflow-card/master/assets/img/so-card.png)
