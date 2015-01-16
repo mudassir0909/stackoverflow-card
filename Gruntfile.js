@@ -34,10 +34,13 @@ module.exports = function(grunt) {
         src: ['lib/widget.js']
       }
     },
-    lightweight_template_precompiler: {
+    dot: {
       compile: {
+        options: {
+          variable: 'so_tmpl'
+        },
         files: {
-          'dist/template.js': 'lib/so-card-template.html'
+          'dist/template.js': 'lib/so-card-template.dot'
         }
       }
     },
@@ -81,6 +84,20 @@ module.exports = function(grunt) {
     },
     qunit: {
       files: ['test/**/*.html']
+    },
+    copy: {
+      dist: {
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ['./dist/so-card-widget.min.js',
+                  './dist/so-card-widget.min.css'],
+            dest: './dist/1.0.0/',
+            filter: 'isFile'
+          }
+        ]
+      }
     }
   });
 
@@ -93,11 +110,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-handlebars');
-  grunt.loadNpmTasks('grunt-lightweight-template-precompiler');
+  grunt.loadNpmTasks('grunt-dot-compiler');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'lightweight_template_precompiler',
-                                 'concat', 'uglify', 'less', 'cssmin']);
+  grunt.registerTask('default', ['jshint', 'dot', 'concat', 'uglify',
+                                 'less', 'cssmin', 'copy']);
   grunt.registerTask('init', ['default', 'watch']);
 
 };

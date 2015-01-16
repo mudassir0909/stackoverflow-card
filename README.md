@@ -18,6 +18,15 @@ In addition to that you need to include the following `script` tag & voila !
 # Look and feel Customization
 The card supports two themes out of the box
 
+# Callback
+This card fires a callback if it is done rendering the card. You should have a function named `soAsyncInit` defined globally. Stackoverflow profile data is passed along the callback;
+
+```javascript
+window.soAsyncInit = function(profile_data) {
+    // Do stuff;
+}
+```
+
 ### default
 ![Default Theme](https://raw.githubusercontent.com/mudassir0909/stackoverflow-card/master/assets/img/so-card.png)
 

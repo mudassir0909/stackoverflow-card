@@ -1,40 +1,8 @@
-(function() {
-	window.JST = window.JST || {};
-	JST["so-card-template"] = function(data) {
-		return "<div class='so-card'>" 	+
- "<a href='" + data.profile_url + "' target='_blank' class='so-profile-link'></a>" 	+
- "<div class='so-header'>" 	+
- "<span class='so-logo'>" 	+
- "<img src='" + data.logo_url + "' alt=''>" 	+
- "</span>" 	+
- "<div class='so-profile-picture-container'>" 	+
- "<img src='" + data.profile_image + "' alt=''>" 	+
- "</div>" 	+
- "<h4 class='so-display-name'>" + data.display_name + "</h4>" 	+
- "</div>" 	+
- "<div class='so-content'>" 	+
- "<p class='so-reputation'>" + data.reputation + "</p>" 	+
- "<small class='so-reputation-label'>Stackoverflow reputation</small>" 	+
- "</div>" 	+
- "" 	+
- "<div class='so-footer'>" 	+
- "<span class='so-badges-label'>Badges</span>" 	+
- "" 	+
- "<span class='so-badge-wrapper'>" 	+
- "<span class='so-badge so-badge-gold'></span>" 	+
- "<span class='so-badge-count'>" + data.badge_counts.gold + "</span>" 	+
- "</span>" 	+
- "" 	+
- "<span class='so-badge-wrapper'>" 	+
- "<span class='so-badge so-badge-silver'></span>" 	+
- "<span class='so-badge-count'>" + data.badge_counts.silver + "</span>" 	+
- "</span>" 	+
- "" 	+
- "<span class='so-badge-wrapper'>" 	+
- "<span class='so-badge so-badge-bronze'></span>" 	+
- "<span class='so-badge-count'>" + data.badge_counts.bronze + "</span>" 	+
- "</span>" 	+
- "</div>" 	+
- "</div>";
-	};
-})();
+var so_tmpl = (function(){
+function encodeHTMLSource() {  var encodeHTMLRules = { "&": "&#38;", "<": "&#60;", ">": "&#62;", '"': '&#34;', "'": '&#39;', "/": '&#47;' },  matchHTML = /&(?!#?w+;)|<|>|"|'|\//g;  return function() {    return this ? this.replace(matchHTML, function(m) {return encodeHTMLRules[m] || m;}) : this;  };};
+String.prototype.encodeHTML=encodeHTMLSource();
+var tmpl = {};
+  tmpl['so-card-template']=function anonymous(it) {
+var out='<div class="so-card"><a href="'+(it.profile_url)+'" target="_blank" class="so-profile-link"></a><div class="so-header"><span class="so-logo"><img src="'+(it.logo_url)+'" alt=""></span><div class="so-profile-picture-container"><img src="'+(it.profile_image)+'" alt=""></div><h4 class="so-display-name">'+(it.display_name)+'</h4></div><div class="so-content"><p class="so-reputation">'+(it.reputation)+'</p><small class="so-reputation-label">Stackoverflow reputation</small></div><div class="so-footer"><span class="so-badges-label">Badges</span><span class="so-badge-wrapper"><span class="so-badge so-badge-gold"></span><span class="so-badge-count">'+(it.badge_counts.gold)+'</span></span><span class="so-badge-wrapper"><span class="so-badge so-badge-silver"></span><span class="so-badge-count">'+(it.badge_counts.silver)+'</span></span><span class="so-badge-wrapper"><span class="so-badge so-badge-bronze"></span><span class="so-badge-count">'+(it.badge_counts.bronze)+'</span></span></div></div>';return out;
+};
+return tmpl;})();
