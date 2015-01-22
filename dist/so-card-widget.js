@@ -8,16 +8,17 @@ var out='<div class="so-card"><a href="'+(it.profile_url)+'" target="_blank" cla
 return tmpl;})();
 (function(document) {
     var container = document.getElementById('so-card-widget'),
-        config = container.dataset,
+        userid = container.getAttribute('data-userid'),
+        theme = container.getAttribute('data-theme'),
         request = new XMLHttpRequest(),
         request_url = "//api.stackexchange.com/2.2/users/" +
-                      config.userid + '/?site=stackoverflow',
+                      userid + '/?site=stackoverflow',
         widget_stylesheet_url = "//mudassir0909.github.io/stackoverflow-card/dist/1.0.0/so-card-widget.min.css",
         logo_url = "//cdn.rawgit.com/mudassir0909/stackoverflow-card/master/assets/img/so-icon.png",
-        profile_url = '//stackoverflow.com/users/' + config.userid;
+        profile_url = '//stackoverflow.com/users/' + userid;
 
     function render(user_info) {
-        var theme_class = "so-card-theme-" + (config.theme || 'default');
+        var theme_class = "so-card-theme-" + (theme || 'default');
 
         container.className += theme_class;
         container.innerHTML = window.so_tmpl['so-card-template']({
@@ -31,7 +32,7 @@ return tmpl;})();
     }
 
     // Inserting widget stylesheet
-    if (config.theme !== 'custom') {
+    if (theme !== 'custom') {
         (function(document, tag_name) {
             var existing_stylesheet_tags, last_stylesheet_tag,
                 widget_stylesheet_tag = document.createElement(tag_name);
