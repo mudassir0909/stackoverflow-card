@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Widget Testing</title>
+    <style type="text/css">
+        #so-card-widget {
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div id="so-card-widget" data-userid="1482899" data-theme="default"></div>
+    <script type="text/javascript" src="dist/so-card-widget.js"></script>
+    <script>
+        window.soAsyncInit = function(a) {
+            alert("Card rendered successfully !");
+        }
+    </script>
+</body>
+</html>
